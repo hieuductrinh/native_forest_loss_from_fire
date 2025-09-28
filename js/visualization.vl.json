@@ -29,11 +29,11 @@
       "legend": {"orient": "right", "offset": 1, "title": "Proportion (%)"}
     },
     "tooltip": [
-      {"field": "properties.STE_NAME21", "type": "nominal", "title": "State:"},
+      {"field": "properties.STE_NAME21", "type": "nominal", "title": "State"},
       {
         "field": "Proportion of native forest in affected area",
         "type": "quantitative",
-        "title": "Proportion (%):"
+        "title": "Proportion (%)"
       }
     ]
   },

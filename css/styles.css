@@ -1,4 +1,4 @@
-body {
+#choropleth_map {
     display: flex;
     justify-content: center;
     align-items: center;
