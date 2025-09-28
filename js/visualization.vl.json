@@ -1,0 +1,41 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Native Forest Area Impacted by Fire, by region, in the Black Summer bushfires 2019-2020",
+  "width": 800,
+  "height": 400,
+  "projection": {"type": "mercator"},
+  "data": {
+    "url": "https://raw.githubusercontent.com/hieuductrinh/native_forest_loss_from_fire/d4ad98cdb72bfd02ec3f0e7ec2757063d54f4024/js/STE_2021_AUST_GDA2020.json",
+    "format": {"type": "topojson", "feature": "STE_2021_AUST_GDA2020"}
+  },
+  "transform": [
+    {
+      "lookup": "properties.STE_NAME21",
+      "from": {
+        "data": {
+          "url": "https://raw.githubusercontent.com/hieuductrinh/native_forest_loss_from_fire/refs/heads/main/data/ABARES_Forest_Fire_area_2019_20_data_tables_28Apr.csv"
+        },
+        "key": "State",
+        "fields": ["Proportion of native forest in affected area"]
+      }
+    }
+  ],
+  "mark": {"type": "geoshape", "stroke": "grey", "strokeWidth": 0.5},
+  "encoding": {
+    "color": {
+      "field": "Proportion of native forest in affected area",
+      "type": "quantitative",
+      "scale": {"scheme": "reds"},
+      "legend": {"orient": "right", "offset": 1, "title": "Proportion (%)"}
+    },
+    "tooltip": [
+      {"field": "properties.STE_NAME21", "type": "nominal", "title": "State:"},
+      {
+        "field": "Proportion of native forest in affected area",
+        "type": "quantitative",
+        "title": "Proportion (%):"
+      }
+    ]
+  },
+  "config": {}
+}
